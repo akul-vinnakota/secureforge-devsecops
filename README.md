@@ -153,3 +153,16 @@ python -m pytest -v
 
 - Day 1: Initialized the repository and project structure
 - Day 2: Built the FastAPI foundation, health endpoint, and automated tests
+
+
+## Security Demonstration Endpoint
+
+SecureForge includes an intentionally insecure authentication endpoint for authorized security testing.
+
+- `GET /demo-login`
+- Uses fake hardcoded demonstration credentials
+- Returns `200 OK` for valid credentials
+- Returns `401 Unauthorized` for invalid credentials
+- Will be scanned and remediated in a future security-pipeline phase
+
+> Warning: This endpoint is deliberately insecure and must never be used in a production environment.

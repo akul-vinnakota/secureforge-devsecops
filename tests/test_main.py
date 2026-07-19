@@ -24,3 +24,34 @@ def test_health_check() -> None:
         "status": "healthy",
         "service": "secureforge-api",
     }
+
+
+def test_demo_login_success() -> None:
+    response = client.get(
+        "/demo-login",
+        params={
+            "username": "admin",
+            "password": "SecureForge-Demo-Only-123!",
+        },
+    )
+
+    assert response.status_code == 200
+    assert response.json() == {
+        "status": "authenticated",
+        "warning": "Intentionally insecure demonstration endpoint",
+    }
+
+
+def test_demo_login_rejects_invalid_credentials() -> None:
+    response = client.get(
+        "/demo-login",
+        params={
+            "username": "admin",
+            "password": "wrong-password",
+        },
+    )
+
+    assert response.status_code == 401
+    assert response.json() == {
+        "detail": "Invalid demonstration credentials",
+    }

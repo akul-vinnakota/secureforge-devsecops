@@ -166,3 +166,29 @@ SecureForge includes an intentionally insecure authentication endpoint for autho
 - Will be scanned and remediated in a future security-pipeline phase
 
 > Warning: This endpoint is deliberately insecure and must never be used in a production environment.
+
+
+## Static Security Scanning
+
+SecureForge uses Bandit to scan Python source code for common security weaknesses.
+
+Run the scan locally:
+
+    ./scripts/run_bandit.sh
+
+The scan generates a JSON report at:
+
+    reports/bandit-report.json
+
+Bandit currently detects the intentionally hardcoded demonstration password as a B105 finding. This controlled vulnerability proves that the security scanner and CI/CD security gate can identify and block insecure code.
+
+## Security CI Pipeline
+
+GitHub Actions automatically performs the following checks on pushes and pull requests targeting `main`:
+
+1. Installs production and development dependencies
+2. Runs the automated pytest suite
+3. Runs the Bandit static security scan
+4. Fails the workflow when a security finding is detected
+
+The current Bandit failure is intentional and will be remediated during a future project phase.

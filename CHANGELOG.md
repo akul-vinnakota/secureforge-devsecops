@@ -6,6 +6,11 @@ All significant changes to SecureForge will be documented in this file.
 
 ### Added
 
+- Bandit static application security scanning
+- Reusable security scan script with JSON reporting
+- GitHub Actions workflow for automated tests and security scans
+- CI security gate that fails when vulnerabilities are detected
+
 - Controlled insecure demonstration login endpoint
 - Authentication success and failure tests
 - Documentation for authorized security testing

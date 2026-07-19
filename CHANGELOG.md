@@ -6,6 +6,10 @@ All significant changes to SecureForge will be documented in this file.
 
 ### Added
 
+- Controlled insecure demonstration login endpoint
+- Authentication success and failure tests
+- Documentation for authorized security testing
+
 - FastAPI application foundation
 - Root and health-check API endpoints
 - Automated pytest coverage for API endpoints

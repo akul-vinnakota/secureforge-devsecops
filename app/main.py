@@ -1,3 +1,5 @@
+import os
+
 from fastapi import FastAPI, HTTPException
 
 app = FastAPI(
@@ -23,14 +25,18 @@ def health_check() -> dict[str, str]:
     }
 
 
-# Intentionally insecure demonstration credentials for authorized testing only.
-DEMO_USERNAME = "admin"
-DEMO_PASSWORD = "SecureForge-Demo-Only-123!"
-
-
 @app.get("/demo-login")
 def demo_login(username: str, password: str) -> dict[str, str]:
-    if username != DEMO_USERNAME or password != DEMO_PASSWORD:
+    demo_username = os.getenv("DEMO_USERNAME")
+    demo_password = os.getenv("DEMO_PASSWORD")
+
+    if not demo_username or not demo_password:
+        raise HTTPException(
+            status_code=503,
+            detail="Demonstration credentials are not configured",
+        )
+
+    if username != demo_username or password != demo_password:
         raise HTTPException(
             status_code=401,
             detail="Invalid demonstration credentials",
@@ -38,5 +44,5 @@ def demo_login(username: str, password: str) -> dict[str, str]:
 
     return {
         "status": "authenticated",
-        "warning": "Intentionally insecure demonstration endpoint",
+        "warning": "Demonstration endpoint using environment configuration",
     }

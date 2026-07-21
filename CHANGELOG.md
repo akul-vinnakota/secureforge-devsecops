@@ -6,6 +6,11 @@ All significant changes to SecureForge will be documented in this file.
 
 ### Added
 
+- Remediated the Bandit B105 hardcoded credential finding using environment variables
+- Added secure missing-configuration handling with an HTTP 503 response
+- Added an `.env.example` template with public placeholders
+- Expanded automated test coverage to five tests
+
 - Bandit static application security scanning
 - Reusable security scan script with JSON reporting
 - GitHub Actions workflow for automated tests and security scans

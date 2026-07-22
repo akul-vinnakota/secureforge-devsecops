@@ -36,3 +36,6 @@ jobs:
 
       - name: Run Bandit security scan
         run: ./scripts/run_bandit.sh
+
+      - name: Run dependency vulnerability scan
+        run: ./scripts/run_pip_audit.sh

@@ -6,6 +6,11 @@ All significant changes to SecureForge will be documented in this file.
 
 ### Added
 
+- Added `pip-audit` dependency vulnerability scanning
+- Added reusable dependency-audit script with JSON reporting
+- Integrated dependency scanning into GitHub Actions
+- Added CI blocking for known vulnerable Python packages
+
 - Remediated the Bandit B105 hardcoded credential finding using environment variables
 - Added secure missing-configuration handling with an HTTP 503 response
 - Added an `.env.example` template with public placeholders

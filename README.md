@@ -204,3 +204,18 @@ Set local demonstration values before starting the application:
     export DEMO_PASSWORD=choose-a-local-demo-password
 
 The `.env.example` file contains public placeholders only. Real credentials and local `.env` files must never be committed.
+
+
+## Dependency Vulnerability Scanning
+
+SecureForge uses `pip-audit` to check Python production dependencies against known vulnerability databases.
+
+Run the scan locally:
+
+    ./scripts/run_pip_audit.sh
+
+The scan generates a JSON report at:
+
+    reports/pip-audit-report.json
+
+The GitHub Actions security pipeline runs this check automatically and blocks the build when a known vulnerable dependency is detected.
